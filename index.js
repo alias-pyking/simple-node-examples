@@ -1,12 +1,15 @@
 const rect = require('./rectangle');
 const solveRectangle=(l,b)=>{
     console.log(`Solving for rectangle with l=${l} and b=${b}`);
-    if(l <= 0 || b <= 0) {
-        console.error("Rectangle dim should be greater than 0\n");
-    } else{
-        console.log(`Area of the rectangle is ${rect.area(l,b)}`);
-        console.log(`Perimeter of the rectangle is ${rect.perimeter(l,b)}\n`);
-    }
+    rect(l,b,(err, rectangle) =>{
+        if(err){
+            console.log(`Error : ${err.message}`);
+        } else{
+            console.log(`Area of rectangle of dims of l = ${l} and b = ${b} is : ${rect.area}`);
+            console.log(`Perimeter of rectangle is : ${rect.perimeter}\n`);
+        }
+    });
+    console.log("This statement is after the call to rect");
 }
 
 solveRectangle(2,4);
